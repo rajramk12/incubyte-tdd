@@ -22,7 +22,11 @@ class StringTestCalculator < Minitest::Test
 	end
 
 	def test_add_numbers_with_multiple_linespace
-		assert_equal 21, @calc.add("1\n2,3\n7\n8")
+		assert_equal 21 , @calc.add("1\n2,3\n7\n8")
+	end
+
+	def test_add_numbers_with_delimiters
+		assert_equal 13 , @calc.add("//;\n1;2;4;6")
 	end
 
 end
