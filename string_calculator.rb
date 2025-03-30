@@ -1,5 +1,7 @@
 	class NegativeNumbersException < StandardError
+		attr_reader :negative_nums
 		def initialize(nums)
+			@negative_nums = nums
 		  super("Negative numbers found #{nums}")
 		end
 	end
@@ -22,7 +24,7 @@ class StringCalculator
 		nums = nums.split(pattern).reject(&:empty?)
 
 		nums.each do |num|
-			negative_nums << num if Integer(num).negative?
+			negative_nums << num && next if Integer(num).negative?
 			out += Integer(num)
 		end
 		
