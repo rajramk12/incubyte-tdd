@@ -1,6 +1,6 @@
 	class NegativeNumbersException < StandardError
-		def initialize(*nums)
-		  super("Negative numbers found #{nums.to_s}")
+		def initialize(nums)
+		  super("Negative numbers found #{nums}")
 		end
 	end
 
@@ -25,8 +25,6 @@ class StringCalculator
 			negative_nums << num if Integer(num).negative?
 			out += Integer(num)
 		end
-
-		p negative_nums		
 		
 		raise NegativeNumbersException.new(negative_nums)  if negative_nums.size > 0 
 

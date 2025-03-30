@@ -42,4 +42,11 @@ class StringTestCalculator < Minitest::Test
 	def test_add_negative_numbers
 		assert_raises(NegativeNumbersException) { @calc.add("-1,2,3,4,6") }
 	end
+
+	def test_add_multiple_negative_numbers
+		nums = ["-6", "-4"]
+		error_string = "Negative numbers found #{nums}" 
+		exception = assert_raises(NegativeNumbersException) { @calc.add("2,4,-6,-4") }
+		assert_equal exception.message, error_string
+	end
 end
