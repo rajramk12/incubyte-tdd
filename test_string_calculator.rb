@@ -29,4 +29,11 @@ class StringTestCalculator < Minitest::Test
 		assert_equal 13 , @calc.add("//;\n1;2;4;6")
 	end
 
+	def test_add_numbers_with_diff_delimiters
+		assert_equal 13, @calc.add("//:\n1:2:4:6")
+	end
+
+	def test_add_numbers_with_diff_delimiters_2
+		assert_equal 13, @calc.add("//|\n1|2|4|6")
+	end
 end
