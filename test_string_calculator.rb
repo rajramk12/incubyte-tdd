@@ -6,10 +6,15 @@ class StringTestCalculator < Minitest::Test
 	end
 
 	def test_add_blank
-		assert_equal  0, @calc.add()
+		assert_equal  0, @calc.add("")
+	end
+
+	def test_add_number
+		assert_equal 7, @calc.add("7")
 	end
 
 	def test_add_numbers
-		assert_equal 3, @calc.add(1,2)
+		assert_equal 12, @calc.add("3,4,5")
 	end
+
 end

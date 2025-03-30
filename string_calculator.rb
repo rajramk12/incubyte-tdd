@@ -1,12 +1,14 @@
 class StringCalculator
-	def add(*args)
+	def add(nums)
 		out = 0 
-		return out if args.size < 1
+		return out if nums.size < 1
 
-		args.each do |num|
-			out += num
+		nums = nums.split(',')
+
+		nums.each do |num|
+			out += Integer(num)
 		end
-		
+
 		return out
 	end
 end
