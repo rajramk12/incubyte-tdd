@@ -17,4 +17,12 @@ class StringTestCalculator < Minitest::Test
 		assert_equal 12, @calc.add("3,4,5")
 	end
 
+	def test_add_numbers_with_linespace
+		assert_equal 6, @calc.add("1\n2,3")
+	end
+
+	def test_add_numbers_with_multiple_linespace
+		assert_equal 21, @calc.add("1\n2,3\n7\n8")
+	end
+
 end

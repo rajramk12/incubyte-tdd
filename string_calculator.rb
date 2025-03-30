@@ -3,7 +3,7 @@ class StringCalculator
 		out = 0 
 		return out if nums.size < 1
 
-		nums = nums.split(',')
+		nums = nums.split(/[\n,]/)
 
 		nums.each do |num|
 			out += Integer(num)
