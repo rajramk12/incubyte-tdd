@@ -1,5 +1,7 @@
 require 'minitest\autorun'
 require_relative 'string_calculator'
+# require_relative 'exception/negative_numbers_exception'
+
 class StringTestCalculator < Minitest::Test
 	def setup
 		@calc = StringCalculator.new
@@ -35,5 +37,9 @@ class StringTestCalculator < Minitest::Test
 
 	def test_add_numbers_with_diff_delimiters_2
 		assert_equal 13, @calc.add("//|\n1|2|4|6")
+	end
+
+	def test_add_negative_numbers
+		assert_raises(NegativeNumbersException) { @calc.add("-1,2,3,4,6") }
 	end
 end

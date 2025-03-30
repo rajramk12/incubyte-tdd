@@ -1,6 +1,13 @@
+	class NegativeNumbersException < StandardError
+		def initialize(*nums)
+		  super("Negative numbers found #{nums.to_s}")
+		end
+	end
+
 class StringCalculator
 	def add(nums)
 		out = 0 
+		negative_nums = []
 		return out if nums.size < 1
 
 		delimiters = ["\n", ","]
@@ -15,8 +22,13 @@ class StringCalculator
 		nums = nums.split(pattern).reject(&:empty?)
 
 		nums.each do |num|
+			negative_nums << num if Integer(num).negative?
 			out += Integer(num)
 		end
+
+		p negative_nums		
+		
+		raise NegativeNumbersException.new(negative_nums)  if negative_nums.size > 0 
 
 		return out
 	end
