@@ -52,4 +52,8 @@ class StringTestCalculator < Minitest::Test
 	def test_add_numbers_gte_1000
 		assert_equal 6, @calc.add("1\n2,3,1001,2000")
 	end
+
+		def test_add_numbers_different_delimiters_in_same_string
+		assert_equal 6, @calc.add("//[*][%]\n1*2%3")
+	end
 end
