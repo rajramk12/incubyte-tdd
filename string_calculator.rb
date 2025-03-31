@@ -21,11 +21,12 @@ class StringCalculator
 
 		pattern = Regexp.new(delimiters.to_s)
 
-		nums = nums.split(pattern).reject(&:empty?)
+		nums = nums.split(pattern).reject(&:empty?).map {|num| Integer(num)}
 
 		nums.each do |num|
-			negative_nums << num && next if Integer(num).negative?
-			out += Integer(num)
+			negative_nums << num && next if num.negative?
+			next if num > 1000
+			out += num
 		end
 		
 		raise NegativeNumbersException.new(negative_nums)  if negative_nums.size > 0 
